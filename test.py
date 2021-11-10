@@ -4,9 +4,15 @@
 # f.close()
 
 import json
-with open('B2.json') as f:
-    data = json.load(f)
-    #min floor
-    print(data["_elevators"][0]["_minFloor"])
-    #max floor
-    print(data["_elevators"][0]["_maxFloor"])
+import Building
+
+f = open('B5.json', "r")
+data = json.loads(f.read())
+# for i in data['_elevators']:
+#     print(i)
+
+b = Building(data)
+print(b.size)
+f.close()
+
+
