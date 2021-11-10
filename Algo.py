@@ -5,4 +5,4 @@ import json
 
 class Algo:
     def __timeTo__(self,call,elevator):
-        x = 5
+        x = 4
