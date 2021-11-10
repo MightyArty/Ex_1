@@ -4,17 +4,15 @@
 # f.close()
 
 import json
-with open('B2.json') as f:
-    data = json.load(f)
-    #min floor
-    print(data["_elevators"][0]["_minFloor"])
-    #max floor
-    print(data["_elevators"][0]["_maxFloor"])
+import Building
 
-person_dict = {"name": "David", "age": "2"}
-person_json = json.dumps(person_dict)
-print(person_json)
+f = open('B5.json', "r")
+data = json.loads(f.read())
+# for i in data['_elevators']:
+#     print(i)
 
-# saving the text data
-data_json = json.dumps(data)
-print(data_json)
+b = Building(data)
+print(b.size)
+f.close()
+
+

@@ -4,13 +4,10 @@ This is the calls method class
 
 
 class Calls:
-    def __init__(self, src: int, dest: int, time: float):
-        self.src = src
-        self.dest = dest
-        self.time = time
+    def __init__(self, data):
+        self.time = data[1]
+        self.src = data[2]
+        self.dst = data[3]
+        self.status = data[4]
+        self.elv = data[5]
 
-        #need to move from here !!!!
-    # def __timeTo__(self):
-    #     result = self.stopTime + self.startTime + self.openTime + self.closeTime + \
-    #              self.speed * (abs(self.dest - self.src))
-    #     return result
