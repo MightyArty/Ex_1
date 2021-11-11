@@ -1,14 +1,19 @@
 import json
 from Elevators import Elevators
 
+"""
+Building class
+Which collect the data from given json file
+"""
+
 
 class Building:
     def __init__(self, data):
-            self._maxFloor = int(data["_maxFloor"])
-            self._minFloor = int(data["_minFloor"])
-            self.elevators = []
-            self.size = len(data["_elevators"])
-            for i in data["_elevators"]:
+        with open(data, "r") as file:
+            read = json.load(file)
+            self._maxFloor = read["_maxFloor"]
+            self._minFloor = read["_minFloor"]
+            # pushing all the data representing elevator in each building
+            # to the elevator array
+            for i in read["_elevators"]:
                 self.elevators.append(Elevators(i))
-
-
