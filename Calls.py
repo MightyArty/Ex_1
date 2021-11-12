@@ -1,28 +1,19 @@
-"""
-This is the calls method class
-"""
 import csv
 
 
 class Calls:
-    def __init__(self, data):
-        self.name = data[0]
-        self.time = data[1]
-        self.src = data[2]
-        self.dst = data[3]
-        self.status = data[4]
-        self.elv = data[5]
+    def __init__(self, time: float = 0, src: int = 0, dest: int = 0, status: int = 0, index: int = -1):
+        self.time = time
+        self.src = src
+        self.dest = dest
+        self.status = status
+        self.index = index
 
-
-class CallsList:
-    def __init__(self, data):
-        with open(data) as file:
-            read = csv.reader(file)
-            self.Calls = []
+    def callList(self, csv_file):
+        with open(csv_file) as f:
+            read = csv.reader(f)
+            temp = []
             for line in read:
-                self.Calls.append(str(line[0]))  # name
-                self.Calls.append(float(line[1]))  # time
-                self.Calls.append(int(line[2]))  # src
-                self.Calls.append(int(line[3]))  # dest
-                self.Calls.append(int(line[4]))  # status
-                self.Calls.append(int(line[5]))  # elevator index
+                # only for time, src and dest
+                arr = Calls(line[1], line[2], line[3])
+                temp.append(arr)

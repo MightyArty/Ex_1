@@ -16,6 +16,7 @@ def timeTo(self, call):
     result = self._closeTime + self._startTime + (fromTo / self._speed) + self._stopTime + self._openTime
     return result
 
+
 # if __name__ == '__main__':
 #     with open("Ex1_Calls/Calls_a.csv") as file:
 #         reader = csv.reader(file)
