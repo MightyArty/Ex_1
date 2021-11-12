@@ -1,6 +1,6 @@
 class Elevators:
 
-    def __init__(self, data):
+    def __init__(self, data, time: float = 0):
         self.id = float(data["_id"])
         self.speed = float(data["_speed"])
         self.minFloor = int(data["_minFloor"])
@@ -9,3 +9,4 @@ class Elevators:
         self.openTime = float(data["_openTime"])
         self.startTime = float(data["_startTime"])
         self.stopTime = float(data["_stopTime"])
+        self.time = time

@@ -19,6 +19,14 @@ def timeTo(self, call):
 def allocate(self):
     if self.calls.src < self.building._minFloor or self.calls.src > self.building._maxFloor or self.calls.dest < self.building._minFloor or self.calls.dest > self.building._maxFloor:
         print("The floor does not exist :(")
-    for i in Calls:
-        if self.calls.status != 0:
+    t = self.calls.time + timeTo(self, self.calls)  # 4.37 + (dest - src) --> from 0 to -1
+    if self.calls.status != 0:
+        if t > self.calls.time:  # t > actual time (t > 16.96)
+            with open('out', 'w') as f:
+                writer = csv.writer(f)
+                writer.writerow()  # need to write to the csv file at column 5
+
+
+
+
 
