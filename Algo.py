@@ -1,22 +1,23 @@
-import Building
-import Elevators
 import json
 import csv
 
-
-class CallsList:
-    def __init__(self, data):
-        with open(data) as file:
-            read = csv.reader(file)
-            self.Calls = []
-            for i in read:
-                self.Calls.append(str(i[0]))  # name
-                self.Calls.append(float(i[1]))  # time
-                self.Calls.append(int(i[2]))  # src
-                self.Calls.append(int(i[3]))  # dest
-                self.Calls.append(int(i[4]))  # status
-                self.Calls.append(int(i[5]))  # elevator index
+import Building
+from Calls import CallsList
 
 
-class Algo:
+def __init__(self, calls, building, out):
+    self.callList = CallsList(calls)
+    self.out = out
+    self.building = Building(building)
 
+
+def timeTo(self, call):
+    fromTo = abs(call.src - self._currentFloor) + abs(call.dest - call.src)
+    result = self._closeTime + self._startTime + (fromTo / self._speed) + self._stopTime + self._openTime
+    return result
+
+# if __name__ == '__main__':
+#     with open("Ex1_Calls/Calls_a.csv") as file:
+#         reader = csv.reader(file)
+#         for i in reader:
+#             print(i)

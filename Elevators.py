@@ -1,4 +1,5 @@
 class Elevators:
+
     def __init__(self, data):
         self.id = float(data["_id"])
         self.speed = float(data["_speed"])
