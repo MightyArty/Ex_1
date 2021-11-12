@@ -10,7 +10,7 @@ class Building:
             self._maxFloor = read["_maxFloor"]
             self._minFloor = read["_minFloor"]
             file = read["_elevators"]
-            for i in file:
-                temp = Elevators(i["_id"], i["_speed"], i["_minFloor"], i["_maxFloor"], i["_closeTime"],
-                                 i["_openTime"], i["_startTime"], i["_stopTime"])
+            for line in file:
+                temp = Elevators(line["_id"], line["_speed"], line["_minFloor"], line["_maxFloor"], line["_closeTime"],
+                                 line["_openTime"], line["_startTime"], line["_stopTime"])
                 self.elevArr.append(temp)
