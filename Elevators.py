@@ -16,6 +16,6 @@ class Elevators:
                f'startTime {self.startTime}, stopTime {self.stopTime}'
 
     def __repr__(self):
-        return f'id :{self.id}, speed :{self.speed}, minFloor :{self.minFloor},' \
-               f'maxFloor :{self.maxFloor}, closeTime :{self.closeTime}, openTime :{self.openTime},' \
-               f'startTime :{self.startTime}, stopTime :{self.stopTime}'
+        return f'id: {self.id}, speed: {self.speed}, minFloor: {self.minFloor}, ' \
+               f'maxFloor: {self.maxFloor}, closeTime: {self.closeTime}, openTime: {self.openTime}, ' \
+               f'startTime: {self.startTime}, stopTime: {self.stopTime}'
