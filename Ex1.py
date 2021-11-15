@@ -3,7 +3,8 @@ import csv
 import sys
 import Building
 import Calls
-import Elevators
+from Elevators import Elevators
+import node
 
 
 class Algo:
@@ -12,6 +13,12 @@ class Algo:
         self.calls = Calls(calls)
         self.building = Building(building)
         self.out = out
+        self.Node = []
+        self.arr=[]
+        for elev in Building.Elevators:
+            self.Node.append(node(Building.Elevators.id))  # need to add the real id
+            self.arr[elev].append(building._elevators.)
+        self.list=ListCalls(buil)
 
     # uploading the data to csv output file
     def saveToCSV(self, csv_file):
@@ -28,15 +35,37 @@ class Algo:
         result = self._closeTime + self._startTime + (fromTo / self._speed) + self._stopTime + self._openTime
         return result
 
-    def allocate(self):
+    def timeTo(self, call, elev):
+        elev=self.building._elevators[]
+
+    def allocate(self, c):
         if self.calls.src < self.building._minFloor or self.calls.src > self.building._maxFloor or self.calls.dest < self.building._minFloor or self.calls.dest > self.building._maxFloor:
             print("The floor does not exist :(")
-        t = self.calls.time + self.timeTo(self, self.calls)  # 4.37 + (dest - src) --> from 0 to -1
-        if self.calls.status != 0:
-            if t > self.calls.time:  # t > actual time (t > 16.96)
-                with open('out', 'w') as f:
-                    writer = csv.writer(f)
-                    # writer.writerow()  # need to write to the csv file at column 5
+        tempTime = float('inf')
+        tempID= -1
+        for elev in range(len(self.building._elevators)):
+            time = self.calls.time + self.timeTo(c, elev)  # 4.37 + (dest - src) --> from 0 to -1
+            if tempTime > time:
+                tempTime = time
+                tempID = elev
+        return tempID
+
+        # for i in self.building._elevators:
+        #     if t > self.calls.time and self.isOn(self.Node.src,self.Node.dest,c.src) == True:  # t > actual time (t > 16.96)
+        #         with open('out', 'w') as f:
+        #             writer = csv.writer(f)
+        #             # writer.writerow()  # need to write to the csv file at column 5
+        # time = self.timeTo(c)
+        # tempTime = 0
+        # id = -1
+        # for elev in self.building._elevators:
+        #     if ()
+
+    def isOn(self, a, b, c) -> bool:
+        if (abs(c - a) + abs(b - a)) == abs(b - a):
+            return True
+        else:
+            return False
 
     if __name__ == '__main__':
         print("j")

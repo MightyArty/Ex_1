@@ -1,3 +1,4 @@
+import node
 class Elevators:
 
     def __init__(self, _id, _speed, _minFloor, _maxFloor, _closeTime, _openTime, _startTime, _stopTime):
@@ -9,6 +10,7 @@ class Elevators:
         self.openTime = _openTime
         self.startTime = _startTime
         self.stopTime = _stopTime
+
 
     def __str__(self):
         return f'id {self.id}, speed {self.speed}, minFloor {self.minFloor},' \

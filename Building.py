@@ -13,7 +13,6 @@ def loadFromJSON(json_file):
                 el = Elevators(line["_id"], line["_speed"], line["_minFloor"],
                                line["_maxFloor"], line["_closeTime"], line["_openTime"],
                                line["_startTime"], line["_stopTime"])
-                print(type(el))
                 elevList.append(el)
             listLen = len(elevList)
             return elevList
