@@ -18,7 +18,7 @@ class Algo:
         for elev in Building.Elevators:
             self.Node.append(node(Building.Elevators.id))  # need to add the real id
             self.arr[elev].append(building._elevators.)
-        self.list=ListCalls(buil)
+        self.list=ListCalls(building.id)
 
     # uploading the data to csv output file
     def saveToCSV(self, csv_file):
