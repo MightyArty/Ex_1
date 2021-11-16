@@ -1,8 +1,9 @@
 import json
 import csv
 import sys
-import Building
-import Calls
+import subprocess
+from Building import Building
+from Calls import Calls
 from Elevators import Elevators
 import node
 
@@ -14,21 +15,27 @@ class Algo:
         self.building = Building(building)
         self.out = out
         self.Node = []
-        self.arr=[]
+        self.arr = []
         for elev in Building.Elevators:
             self.Node.append(node(Building.Elevators.id))  # need to add the real id
             self.arr[elev].append(building._elevators)
-        self.list=ListCalls(building.id)
 
-    # uploading the data to csv output file
+    def loadFromCSV(self, csv_file):
+        callList = []
+        with open(csv_file) as f:
+            reader = csv.reader(f)
+            for line in reader:
+                callList.append(Calls(line))
+        return callList
+
     def saveToCSV(self, csv_file):
-        name = 'out.csv'
-        cList = []
-        writer = csv.writer(csv_file)
+        callList = []
         for line in csv_file:
-            cList.append(line._dict_.values())
-            with open(name, 'w', space='') as fp:
-                writer.writerow(cList)
+            out = ["Elevator class", self.calls.time, self.calls.src, self.calls.dest, 0, self.calls.elevIndex]
+            callList.append(out)
+        with open(csv_file) as f:
+            writer = csv.writer(f)
+            writer.writerow(callList)
 
     def timeTo(self, call):
         fromTo = abs(call.src - self._currentFloor) + abs(call.dest - call.src)
@@ -39,7 +46,7 @@ class Algo:
         if self.calls.src < self.building._minFloor or self.calls.src > self.building._maxFloor or self.calls.dest < self.building._minFloor or self.calls.dest > self.building._maxFloor:
             print("The floor does not exist :(")
         tempTime = float('inf')
-        tempID= -1
+        tempID = -1
         for elev in range(len(self.building._elevators)):
             time = self.calls.time + self.timeTo(c, elev)  # 4.37 + (dest - src) --> from 0 to -1
             if tempTime > time:
