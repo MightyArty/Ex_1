@@ -52,24 +52,30 @@ class Algo:
         index = 0
         for elev in self.building.elevArr:
             # checks whether the calls between the ranges
-            if self.isOn(self.Node[i].src, self.Node[i].dest, c.src):
+            if self.Node[i].dest==c.src:
+                time0=c.time + self.timeToSrc(self.Node[i],elev,c.src)
+                self.Node[i].src=c.src
+                self.Node[i].dest=c.dest
+                self.Node[i].time=time0
+                tempID=elev.id
+            elif self.isOn(self.Node[i].src, self.Node[i].dest, c.src):
                 time = c.time + self.timeToSrc(self.Node[i], elev, c.src)  # 4.37 + (dest - src) --> from 0 to -1
                 if time < tempTime:
                     tempTime = time
-                    tempID = elev[i].id
+                    tempID = elev.id
                     index = i
             else:
                 # checks which elev will come first to the call src floor
                 time2 = c.time + self.timeToDest(self.Node[i], elev, c)
                 if time2 < tempTime:
                     tempTime = time2
-                    tempID = elev[i].id
+                    tempID = elev.id
                     index = i
             i = i + 1
         # modify the nodes
         self.Node[index].src = c.src
         self.Node[index].dest = c.dest
-        self.Node[index].time = c.time
+        self.Node[index].time = tempTime
         return tempID
 
         # for i in self.building._elevators:
