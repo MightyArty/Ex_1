@@ -5,7 +5,7 @@ import Building
 import Calls
 from Elevators import Elevators
 import node
-
+import ListCalls
 
 class Algo:
 
@@ -14,11 +14,11 @@ class Algo:
         self.building = Building(building)
         self.out = out
         self.Node = []
-        self.arr=[]
+        self.arr = []
         for elev in Building.Elevators:
             self.Node.append(node(Building.Elevators.id))  # need to add the real id
-            self.arr[elev].append(building._elevators.)
-        self.list=ListCalls(building.id)
+            self.arr[elev].append(building._elevators)
+        self.list = ListCalls(building.id)
 
     # uploading the data to csv output file
     def saveToCSV(self, csv_file):
@@ -29,22 +29,20 @@ class Algo:
             cList.append(line._dict_.values())
             with open(name, 'w', space='') as fp:
                 writer.writerow(cList)
-
-    def timeTo(self, call):
-        fromTo = abs(call.src - self._currentFloor) + abs(call.dest - call.src)
-        result = self._closeTime + self._startTime + (fromTo / self._speed) + self._stopTime + self._openTime
+    # calculating the time for make the call
+    def timeTo(self, c, elev):
+        fromTo = abs(c.src - c.dest)
+        result = elev.stopTime + elev.startTime + (fromTo / elev.speed) + elev.stopTime + elev.openTime
         return result
 
-    def timeTo(self, call, elev):
-        elev=self.building._elevators[]
-
     def allocate(self, c):
+        # check if it not crossing the building limits
         if self.calls.src < self.building._minFloor or self.calls.src > self.building._maxFloor or self.calls.dest < self.building._minFloor or self.calls.dest > self.building._maxFloor:
             print("The floor does not exist :(")
         tempTime = float('inf')
-        tempID= -1
+        tempID = -1
         for elev in range(len(self.building._elevators)):
-            time = self.calls.time + self.timeTo(c, elev)  # 4.37 + (dest - src) --> from 0 to -1
+            time = c.time + self.timeTo(c, elev)  # 4.37 + (dest - src) --> from 0 to -1
             if tempTime > time:
                 tempTime = time
                 tempID = elev
