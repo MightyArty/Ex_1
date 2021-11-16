@@ -54,17 +54,6 @@ class Algo:
                 tempID = elev
         return tempID
 
-        # for i in self.building._elevators:
-        #     if t > self.calls.time and self.isOn(self.Node.src,self.Node.dest,c.src) == True:  # t > actual time (t > 16.96)
-        #         with open('out', 'w') as f:
-        #             writer = csv.writer(f)
-        #             # writer.writerow()  # need to write to the csv file at column 5
-        # time = self.timeTo(c)
-        # tempTime = 0
-        # id = -1
-        # for elev in self.building._elevators:
-        #     if ()
-
     def isOn(self, a, b, c) -> bool:
         if (abs(c - a) + abs(b - a)) == abs(b - a):
             return True
