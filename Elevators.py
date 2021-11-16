@@ -1,4 +1,3 @@
-import node
 class Elevators:
 
     def __init__(self, _id, _speed, _minFloor, _maxFloor, _closeTime, _openTime, _startTime, _stopTime):

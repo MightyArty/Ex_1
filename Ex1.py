@@ -17,7 +17,7 @@ class Algo:
         self.arr=[]
         for elev in Building.Elevators:
             self.Node.append(node(Building.Elevators.id))  # need to add the real id
-            self.arr[elev].append(building._elevators.)
+            self.arr[elev].append(building._elevators)
         self.list=ListCalls(building.id)
 
     # uploading the data to csv output file
@@ -34,9 +34,6 @@ class Algo:
         fromTo = abs(call.src - self._currentFloor) + abs(call.dest - call.src)
         result = self._closeTime + self._startTime + (fromTo / self._speed) + self._stopTime + self._openTime
         return result
-
-    def timeTo(self, call, elev):
-        elev=self.building._elevators[]
 
     def allocate(self, c):
         if self.calls.src < self.building._minFloor or self.calls.src > self.building._maxFloor or self.calls.dest < self.building._minFloor or self.calls.dest > self.building._maxFloor:
