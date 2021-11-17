@@ -42,7 +42,7 @@ class Algo:
     def timeToSrc(self, n, elev, src):
         fromTo = abs(n.src - src)  # 0-0
         return elev.closeTime + elev.startTime + (fromTo / elev.speed) + elev.stopTime + elev.openTime
-
+    def writeToOut(self,csv_file,):
     def allocate(self, c):
         if self.calls.src < self.building._minFloor or self.calls.src > self.building._maxFloor or self.calls.dest < self.building._minFloor or self.calls.dest > self.building._maxFloor:
             print("The floor does not exist :(")
@@ -52,12 +52,13 @@ class Algo:
         index = 0
         for elev in self.building.elevArr:
             # checks whether the calls between the ranges
-            if self.Node[i].dest==c.src:
-                time0=c.time + self.timeToSrc(self.Node[i],elev,c.src)
-                self.Node[i].src=c.src
-                self.Node[i].dest=c.dest
-                self.Node[i].time=time0
-                tempID=elev.id
+            if self.Node[i].dest == c.src:
+                time0 = c.time + self.timeToSrc(self.Node[i], elev, c.src)
+                self.Node[i].src = c.src
+                self.Node[i].dest = c.dest
+                self.Node[i].time = time0
+                tempID = elev.id
+                return tempID
             elif self.isOn(self.Node[i].src, self.Node[i].dest, c.src):
                 time = c.time + self.timeToSrc(self.Node[i], elev, c.src)  # 4.37 + (dest - src) --> from 0 to -1
                 if time < tempTime:
@@ -90,7 +91,7 @@ class Algo:
         #     if ()
 
     def isOn(self, a, b, c) -> bool:
-        if (abs(c - a) + abs(b - a)) == abs(b - a):
+        if (abs(c - a) + abs(b - c)) == abs(b - a):
             return True
         else:
             return False
