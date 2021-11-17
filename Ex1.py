@@ -10,15 +10,14 @@ import node
 
 class Algo:
 
-    def __init__(self, calls, building, out):
+    def __init__(self, calls, building):
         self.calls = Calls(calls)
         self.building = Building(building)
-        self.out = out
         self.Node = []
-        self.arr = []
-        for elev in Building.Elevators:
-            self.Node.append(node(Building.Elevators.id))  # need to add the real id
-            self.arr[elev].append(building._elevators)
+        # self.arr = []
+        for elev in self.building.elevArr:
+            self.Node.append(node(elev.id))  # need to add the real id
+        # self.arr[elev].append(building._elevators)
 
     def loadFromCSV(self, csv_file):
         callList = []
@@ -46,7 +45,15 @@ class Algo:
     def timeToSrc(self, n, elev, src):
         fromTo = abs(n.src - src)  # 0-0
         return elev.closeTime + elev.startTime + (fromTo / elev.speed) + elev.stopTime + elev.openTime
-    def writeToOut(self,csv_file,):
+
+    def writeToOut(self, csv_file):
+        with open(csv_file):
+            for line in csv_file:
+                ans=self.allocate(line)
+                line[5]=ans
+                writer.writerow(line)
+
+
     def allocate(self, c):
         if self.calls.src < self.building._minFloor or self.calls.src > self.building._maxFloor or self.calls.dest < self.building._minFloor or self.calls.dest > self.building._maxFloor:
             print("The floor does not exist :(")
@@ -83,22 +90,14 @@ class Algo:
         self.Node[index].time = tempTime
         return tempID
 
-        # for i in self.building._elevators:
-        #     if t > self.calls.time and self.isOn(self.Node.src,self.Node.dest,c.src) == True:  # t > actual time (t > 16.96)
-        #         with open('out', 'w') as f:
-        #             writer = csv.writer(f)
-        #             # writer.writerow()  # need to write to the csv file at column 5
-        # time = self.timeTo(c)
-        # tempTime = 0
-        # id = -1
-        # for elev in self.building._elevators:
-        #     if ()
-
     def isOn(self, a, b, c) -> bool:
         if (abs(c - a) + abs(b - c)) == abs(b - a):
             return True
         else:
             return False
 
-    if __name__ == '__main__':
-        print("j")
+if __name__ == '__main__':
+    b=Building()
+    b.loadFromJson('B1.json')
+    c=Calls('Calls_a.csv')
+    algo = Algo(c,b)
