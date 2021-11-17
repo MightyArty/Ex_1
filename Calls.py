@@ -2,13 +2,13 @@ import csv
 
 
 class Calls:
-    def __init__(self, csv_file):
-        self.string = csv_file[0]  # Elevator call
-        self.time = csv_file[1]
-        self.src = csv_file[2]
-        self.dest = csv_file[3]
-        self.status = csv_file[4]
-        self.elevIndex = csv_file[5]
+    def __init__(self, name: str, time: float, src: int, dest: int, status: int, elevIndex: int):
+        self.string = name  # Elevator call
+        self.time = time
+        self.src = src
+        self.dest = dest
+        self.status = status
+        self.elevIndex = elevIndex
         self.state = 0
         if self.dest > self.src:
             self.state = 1
@@ -24,8 +24,8 @@ class Calls:
 
     def __str__(self):
         return f'income time {self.time}, src {self.src}, dest {self.dest},' \
-               f'status {self.status} and the index {self.index}'
+               f'status {self.status}  and the index {self.elevIndex}'
 
     def __repr__(self):
         return f'income time ({self.time}), src ({self.src}), dest ({self.dest}),' \
-               f'status ({self.status}) and the index ({self.index})'
+               f'status ({self.status}) and the index ({self.elevIndex})'
