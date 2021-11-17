@@ -1,19 +1,13 @@
-import csv
 
 
 class Calls:
-    def __init__(self, name: str, time: float, src: int, dest: int, status: int, elevIndex: int):
-        self.string = name  # Elevator call
+    def __init__(self, time: float, src: int, dest: int, status: int, elevIndex: int):
         self.time = time
         self.src = src
         self.dest = dest
         self.status = status
         self.elevIndex = elevIndex
         self.state = 0
-        if self.dest > self.src:
-            self.state = 1
-        else:
-            self.state = -1
 
     # checking if the call has been completed
     def finalStatus(self):

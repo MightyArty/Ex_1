@@ -7,6 +7,7 @@ from Elevators import Elevators
 import node
 
 
+
 def loadFromCSV(csv_file):
     callList = []
     with open(csv_file, "r") as f:
@@ -32,6 +33,18 @@ def insertZero(calls):
         call.elevIndex = 0
 
 
+def timeToSrc(n, elev, src):
+    fromTo = abs(n.src - src)  # 0-0
+    return elev.closeTime + elev.startTime + (fromTo / elev.speed) + elev.stopTime + elev.openTime
+
+
+def timeToDest(n, elev, c):
+    fromTo = abs(n.src - n.dest)  # 1-2
+    result = elev.closeTime + elev.startTime + (fromTo / elev.speed) + elev.stopTime + elev.openTime
+    result += timeToSrc(n, elev, c.src)
+    return result
+
+
 class Algo:
 
     def __init__(self, calls, building):
@@ -43,16 +56,6 @@ class Algo:
             self.Node.append(node(elev.id))  # need to add the real id
         # self.arr[elev].append(building._elevators)
 
-    def timeToDest(self, n, elev, c):
-        fromTo = abs(n.src - n.dest)  # 1-2
-        result = elev.closeTime + elev.startTime + (fromTo / elev.speed) + elev.stopTime + elev.openTime
-        result += self.timeToSrc(n, elev, c.src)
-        return result
-
-    def timeToSrc(self, n, elev, src):
-        fromTo = abs(n.src - src)  # 0-0
-        return elev.closeTime + elev.startTime + (fromTo / elev.speed) + elev.stopTime + elev.openTime
-
     def allocate(self, c):
         if self.calls.src < self.building._minFloor or self.calls.src > self.building._maxFloor or self.calls.dest < self.building._minFloor or self.calls.dest > self.building._maxFloor:
             print("The floor does not exist :(")
@@ -63,21 +66,21 @@ class Algo:
         for elev in self.building.elevArr:
             # checks whether the calls between the ranges
             if self.Node[i].dest == c.src:
-                time0 = c.time + self.timeToSrc(self.Node[i], elev, c.src)
+                time0 = c.time + timeToSrc(self.Node[i], elev, c.src)
                 self.Node[i].src = c.src
                 self.Node[i].dest = c.dest
                 self.Node[i].time = time0
                 tempID = elev.id
                 return tempID
             elif self.isOn(self.Node[i].src, self.Node[i].dest, c.src):
-                time = c.time + self.timeToSrc(self.Node[i], elev, c.src)  # 4.37 + (dest - src) --> from 0 to -1
+                time = c.time + timeToSrc(self.Node[i], elev, c.src)  # 4.37 + (dest - src) --> from 0 to -1
                 if time < tempTime:
                     tempTime = time
                     tempID = elev.id
                     index = i
             else:
                 # checks which elev will come first to the call src floor
-                time2 = c.time + self.timeToDest(self.Node[i], elev, c)
+                time2 = c.time + timeToDest(self.Node[i], elev, c)
                 if time2 < tempTime:
                     tempTime = time2
                     tempID = elev.id

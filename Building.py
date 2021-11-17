@@ -46,6 +46,6 @@ class Building:
 
 if __name__ == '__main__':
     b = Building()
-    b.loadFromJson("B1.json")
+    b.loadFromJson("B2.json")
     print(b)
 
