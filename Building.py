@@ -1,6 +1,12 @@
 import json
 from Elevators import Elevators
 
+'''
+Building class
+Creating a python object from the given json file which representing the main Building
+in each run
+'''
+
 
 class Building:
 
@@ -25,6 +31,10 @@ class Building:
         except IOError as error:
             print(error)
 
+    # returning the specified index in the elevator arr which we created in the constructor
+    def getElevIndex(self, index):
+        return self.elevArr[index]
+
     def __str__(self):
         return f"The minimum floor is {self._minFloor} , the maximum floor is {self._maxFloor} " \
                f"and the elevator data is : {self.elevArr} "
@@ -36,8 +46,8 @@ class Building:
 
 if __name__ == '__main__':
     b = Building()
-    b.loadFromJson("B2.json")
+    b.loadFromJson("B1.json")
     print(b)
     print(b.elevArr[0].stopTime)
-    print(b.elevArr[1].id)
+    print(b.elevArr[0].id)
     print(b.elevArr[0].speed)

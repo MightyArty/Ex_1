@@ -1,11 +1,11 @@
 import json
 import csv
 import sys
-import Building
-import Calls
+import subprocess
+from Building import Building
+from Calls import Calls
 from Elevators import Elevators
 import node
-import ListCalls
 
 
 class Algo:
@@ -16,22 +16,26 @@ class Algo:
         self.out = out
         self.Node = []
         self.arr = []
-        i = 0
-        for elev in building.elevArr:
-            self.Node.append(node(elev[i].id))
-            # self.arr.append(elev)
-            i = i + 1
-        self.list = ListCalls(building.id)
+        for elev in Building.Elevators:
+            self.Node.append(node(Building.Elevators.id))  # need to add the real id
+            self.arr[elev].append(building._elevators)
 
-    # uploading the data to csv output file
+    def loadFromCSV(self, csv_file):
+        callList = []
+        with open(csv_file) as f:
+            reader = csv.reader(f)
+            for line in reader:
+                callList.append(Calls(line))
+        return callList
+
     def saveToCSV(self, csv_file):
-        name = 'out.csv'
-        cList = []
-        writer = csv.writer(csv_file)
+        callList = []
         for line in csv_file:
-            cList.append(line._dict_.values())
-            with open(name, 'w', space='') as fp:
-                writer.writerow(cList)
+            out = ["Elevator class", self.calls.time, self.calls.src, self.calls.dest, 0, self.calls.elevIndex]
+            callList.append(out)
+        with open(csv_file) as f:
+            writer = csv.writer(f)
+            writer.writerow(callList)
 
     def timeToDest(self, n, elev, c):
         fromTo = abs(n.src - n.dest)  # 1-2
