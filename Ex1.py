@@ -9,7 +9,7 @@ import node
 
 def loadFromCSV(csv_file):
     callList = []
-    with open(csv_file,"r") as f:
+    with open(csv_file, "r") as f:
         reader = csv.reader(f)
         for line in reader:
             c = Calls(name=str(line[0]), time=float(line[1]), src=int(line[2]), dest=int(line[3]),
@@ -22,16 +22,16 @@ def saveToCSV(c, csv_file):
     callList = []
     for line in c:
         callList.append(line.__dict__.values())
-        # out = node(line.id)
-        # # out = ["Elevator class", self.calls.time, self.calls.src, self.calls.dest, 0, self.calls.elevIndex]
-    # callList.append(out)
-    with open(csv_file,"w") as f:
+    with open(csv_file, "w") as f:
         writer = csv.writer(f)
         writer.writerows(callList)
 
+
 def insertZero(calls):
     for call in calls:
-        call.src = 5555
+        call.elevIndex = 0
+
+
 class Algo:
 
     def __init__(self, calls, building):
@@ -43,8 +43,6 @@ class Algo:
             self.Node.append(node(elev.id))  # need to add the real id
         # self.arr[elev].append(building._elevators)
 
-
-
     def timeToDest(self, n, elev, c):
         fromTo = abs(n.src - n.dest)  # 1-2
         result = elev.closeTime + elev.startTime + (fromTo / elev.speed) + elev.stopTime + elev.openTime
@@ -54,13 +52,6 @@ class Algo:
     def timeToSrc(self, n, elev, src):
         fromTo = abs(n.src - src)  # 0-0
         return elev.closeTime + elev.startTime + (fromTo / elev.speed) + elev.stopTime + elev.openTime
-
-    def writeToOut(self, csv_file):
-        with open(csv_file):
-            for line in csv_file:
-                ans = self.allocate(line)
-                line[5] = ans
-                csv_file.writerow(line)
 
     def allocate(self, c):
         if self.calls.src < self.building._minFloor or self.calls.src > self.building._maxFloor or self.calls.dest < self.building._minFloor or self.calls.dest > self.building._maxFloor:
@@ -113,7 +104,7 @@ if __name__ == '__main__':
     c = loadFromCSV(sys.argv[2])
     # print(c)
     insertZero(c)
-    saveToCSV(c,sys.argv[3])
+    saveToCSV(c, sys.argv[3])
     # c = Calls('Calls_a.csv')
     # # Algo.loadFromCSV(c)
     # algo = Algo(c, b)
