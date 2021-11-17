@@ -27,6 +27,12 @@ class Calls:
                f'status: {self.status} and the index {self.index}'
 
     def __repr__(self):
-        return f'income time: {self.time}, src: {self.src}, dest: {self.dest},'
-        # \
-        #        f'status {self.status} and the index {self.index}'
+        return f'income time: {self.time}, src: {self.src}, dest: {self.dest},'\
+               f'status {self.status} and the index {self.elevIndex}'
+
+
+if __name__ == '__main__':
+    with open('Calls_a.csv', 'r') as f:
+        reader = csv.reader(f)
+        for line in reader:
+            print(line)
