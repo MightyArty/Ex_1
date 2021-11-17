@@ -48,6 +48,4 @@ if __name__ == '__main__':
     b = Building()
     b.loadFromJson("B1.json")
     print(b)
-    print(b.elevArr[0].stopTime)
-    print(b.elevArr[0].id)
-    print(b.elevArr[0].speed)
+
