@@ -9,7 +9,7 @@ import node
 
 def loadFromCSV(csv_file):
     callList = []
-    with open(csv_file,"r") as f:
+    with open(csv_file, "r") as f:
         reader = csv.reader(f)
         for line in reader:
             c = Calls(name=str(line[0]), time=float(line[1]), src=int(line[2]), dest=int(line[3]),
@@ -25,25 +25,26 @@ def saveToCSV(c, csv_file):
         # out = node(line.id)
         # # out = ["Elevator class", self.calls.time, self.calls.src, self.calls.dest, 0, self.calls.elevIndex]
     # callList.append(out)
-    with open(csv_file,"w") as f:
+    with open(csv_file, "w") as f:
         writer = csv.writer(f)
         writer.writerows(callList)
 
-def insertZero(calls):
-    for call in calls:
-        call.src = 5555
+
 class Algo:
 
     def __init__(self, calls, building):
-        self.calls = Calls(calls)
-        self.building = Building()
+        self.c = []
+        for call in calls:
+            self.c = Calls(call.name, call.time, call.src, call.dest, call.status, call.elevIndex)
+        self.building = building
         self.Node = []
         # self.arr = []
+
         for elev in self.building.elevArr:
-            self.Node.append(node(elev.id))  # need to add the real id
+            n = node(elev.id)
+
+            self.Node.append(n)  # need to add the real id
         # self.arr[elev].append(building._elevators)
-
-
 
     def timeToDest(self, n, elev, c):
         fromTo = abs(n.src - n.dest)  # 1-2
@@ -98,7 +99,7 @@ class Algo:
         self.Node[index].time = tempTime
         return tempID
 
-    def isOn(self, a, b, c) -> bool:
+    def isOn(self, a, b, c):
         if (abs(c - a) + abs(b - c)) == abs(b - a):
             return True
         else:
@@ -106,14 +107,24 @@ class Algo:
 
 
 if __name__ == '__main__':
+    # def insertZero(calls):
+    #     for call in calls:
+    #         call.src = 5555
+    a = loadFromCSV(sys.argv[2])
+    b = Building()
+    b.loadFromJson(sys.argv[1])
+    algo = Algo(a, b)
+    # algo.writeToOut(sys.argv[2])
     # print(sys.argv[3])
     # b = Building()
     # b.loadFromJson(sys.argv[1])
     # print(b)
-    c = loadFromCSV(sys.argv[2])
+
     # print(c)
-    insertZero(c)
-    saveToCSV(c,sys.argv[3])
+    3
+    for call in a:
+        call.elevIndex = algo.allocate(call)
+    saveToCSV(a, sys.argv[3])
     # c = Calls('Calls_a.csv')
     # # Algo.loadFromCSV(c)
     # algo = Algo(c, b)

@@ -44,8 +44,8 @@ class Building:
                f"and the elevator data is : {self.elevArr} "
 
 
-if __name__ == '__main__':
-    b = Building()
-    b.loadFromJson("B1.json")
-    print(b)
+# if __name__ == '__main__':
+#     b = Building()
+#     b.loadFromJson("B1.json")
+#     print(b)
 
