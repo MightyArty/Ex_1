@@ -23,9 +23,10 @@ class Calls:
             return False
 
     def __str__(self):
-        return f'income time {self.time}, src {self.src}, dest {self.dest},' \
-               f'status {self.status} and the index {self.index}'
+        return f'income time: {self.time}, src: {self.src}, dest: {self.dest},' \
+               f'status: {self.status} and the index {self.index}'
 
     def __repr__(self):
-        return f'income time ({self.time}), src ({self.src}), dest ({self.dest}),' \
-               f'status ({self.status}) and the index ({self.index})'
+        return f'income time: {self.time}, src: {self.src}, dest: {self.dest},'
+        # \
+        #        f'status {self.status} and the index {self.index}'
