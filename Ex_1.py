@@ -108,7 +108,6 @@ def allocate(c):
     Node[index].dest = c.dest
     Node[index].time = tempTime
     c.elevIndex = tempID
-    # return tempID
 
 
 def isOn(a, b, c):
