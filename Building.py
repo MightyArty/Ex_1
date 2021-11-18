@@ -1,4 +1,6 @@
 import json
+import sys
+
 from Elevators import Elevators
 
 '''
@@ -11,8 +13,8 @@ in each run
 class Building:
 
     def __init__(self):
-        self._minFloor = -2
-        self._maxFloor = 10
+        self._minFloor = 0
+        self._maxFloor = 0
         self.elevArr = []
 
     def loadFromJson(self, json_file):
@@ -44,8 +46,8 @@ class Building:
                f"and the elevator data is : {self.elevArr} "
 
 
-# if __name__ == '__main__':
-#     b = Building()
-#     b.loadFromJson("B1.json")
-#     print(b)
+if __name__ == '__main__':
+    b = Building()
+    b.loadFromJson(sys.argv[1])
+    print(b)
 

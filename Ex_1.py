@@ -7,7 +7,7 @@ from Building import Building
 from node import node
 
 
-##converting json to obj (elevator)
+# converting json to obj (elevator)
 def loadFromJson(json_file):
     try:
         with open(json_file, 'r') as f:
@@ -56,8 +56,6 @@ i = 0
 for elev in building.elevArr:
     Node.append(node(building.elevArr[i].id))
     i = i + 1
-
-
 
 
 def timeToDest(n, elev, c):
