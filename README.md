@@ -4,7 +4,7 @@ This project represnt an off-line smart Elevator system.
 Given a list of Calls as a csv files, and a json files that represent the Building structer (amount of floors,amount of elevators) we are creating a calculation and allocating the best elevator for each call.
 # The problem we are dealing with :
 Nowadays, we have a large buildings with a lot of floors and elevators. The main problem is to allocate the best and fastest elevator for each call.
-In out alogirthm we are trying to solve this problem, by dividing the main problems into sub - problems. If the elevator are in the source floor so that elevator would pick up the given call from the source floor. If the elevator is in the range of the source floor and the destination floor - we would send this elevator to the source floor to proceed the call (if we don't have already a more close elevator for this particular call).
+In our alogirthm we are trying to solve this problem, by dividing the main problems into sub - problems. If the elevator are in the source floor so that elevator would pick up the given call from the source floor. If the elevator is in the range of the source floor and the destination floor - we would send this elevator to the source floor to proceed the call (if we don't have already a more close elevator for this particular call).
 If the elevator is out of the range and we don't have any elevator that are closer to the source floor, we will calculate the time that takes the elevator arive to the source floor + the time taking to arrive to destination floor.
 # Elevator class :
 Represent the elevator functions (speed,close and open time of the doors).
