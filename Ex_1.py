@@ -48,7 +48,7 @@ def saveToCSV(c, csv_file):
         writer.writerows(callList)
 
 
-######               ALGO            ###########
+"""-------------------The actual algo-------------------"""
 Node = []
 building = Building()
 building.loadFromJson(sys.argv[1])
@@ -73,8 +73,6 @@ def timeToSrc(n, elev, src):
 
 
 def allocate(c):
-    # if calls.src < building._minFloor or self.calls.src > self.building._maxFloor or self.calls.dest < self.building._minFloor or self.calls.dest > self.building._maxFloor:
-    #     print("The floor does not exist :(")
     tempTime = float('inf')
     tempID = -1
     i = 0
