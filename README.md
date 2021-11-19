@@ -1,4 +1,4 @@
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/MightyArty/Ex_1?style=plastic)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/MightyArty/Ex_1?style=plastic) ![GitHub contributors](https://img.shields.io/github/contributors/MightyArty/Ex_1)
 # This is an off-line Elevator algorithm in python
 2'nd project in OOP course at Ariel Univeristy using python.
 This project represnt an off-line smart Elevator system.
