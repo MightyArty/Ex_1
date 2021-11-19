@@ -78,34 +78,39 @@ def allocate(c):
     i = 0
     index = 0
     for elev in building.elevArr:
-        # checks whether the calls between the ranges
-        if Node[i].dest == c.src:
-            time0 = c.time + timeToSrc(Node[i], elev, c.src)
-            Node[i].src = c.src
-            Node[i].dest = c.dest
-            Node[i].time = time0
+        if Node[i].dest == c.src: #Elevator is already in position
+            tempTime = max(Node[i].time,c.time) + elev.openTime
             tempID = elev.id
-            c.elevIndex = tempID
-        #     return tempID
+            index = i
+            time_departure = tempTime
+            time_arrival = time_departure + timeToDest(Node[i], elev, c)
+            break
+
         elif isOn(Node[i].src, Node[i].dest, c.src):
-            time = c.time + timeToSrc(Node[i], elev, c.src)  # 4.37 + (dest - src) --> from 0 to -1
+            time = max(Node[i].time,c.time) + timeToSrc(Node[i], elev, c.src)  # 4.37 + (dest - src) --> from 0 to -1
             if time < tempTime:
                 tempTime = time
                 tempID = elev.id
                 index = i
+                time_departure = time
+                time_arrival = time_departure + timeToDest(Node[i], elev, c)
         else:
             # checks which elev will come first to the call src floor
-            time2 = c.time + timeToDest(Node[i], elev, c)
-            if time2 < tempTime:
-                tempTime = time2
+            time = max(Node[i].time,c.time) + timeToDest(Node[i], elev, c)
+            if time < tempTime:
+                tempTime = time
                 tempID = elev.id
                 index = i
+                time_departure = time
+                time_arrival = time_departure + timeToDest(Node[i], elev, c)
         i = i + 1
     # modify the nodes
     Node[index].src = c.src
     Node[index].dest = c.dest
-    Node[index].time = tempTime
+    Node[index].time = time_arrival
     c.elevIndex = tempID
+    c.time_departure = time_departure
+    c.time_arrival = time_arrival
 
 
 def isOn(a, b, c):

@@ -37,6 +37,9 @@ class Building:
     def getElevIndex(self, index):
         return self.elevArr[index]
 
+    def getFloorRange(self):
+        return range(self._minFloor, self._maxFloor +1)
+
     def __str__(self):
         return f"The minimum floor is {self._minFloor} , the maximum floor is {self._maxFloor} " \
                f"and the elevator data is : {self.elevArr} "
