@@ -21,4 +21,4 @@ Also the actual algorithm of the calculation and aloocation of the best elevator
 # The UML diagram of out algorithm :
 ![WhatsApp Image 2021-11-18 at 16 47 58](https://user-images.githubusercontent.com/77808208/142437901-77f52ac5-9d41-465d-a11b-0053dbe010c8.jpeg)
 # Video simulation GUI of our project :
-[![Everything Is AWESOME](hhttps://img.youtube.com/vi/HGhyFRUDFwA/hqdefault.jpg)](https://www.youtube.com/watch?v=HGhyFRUDFwA "Everything Is AWESOME")
+[![CLICK HERE](https://img.youtube.com/vi/HGhyFRUDFwA/mqdefault.jpg)](https://www.youtube.com/watch?v=HGhyFRUDFwA "CLICK HERE")
