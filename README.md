@@ -18,6 +18,8 @@ The node class help us to store the source, destination and time of each call. S
 # Ex_1 (algo class) :
 This class represent the reading from given csv files, json files and writing into a new csv 'out' file.
 Also the actual algorithm of the calculation and aloocation of the best elevator for each call. And by that we providing the best waiting time for each person on every floor at the building.
+# GUI class :
+This class represent the GUI running simulator for the Elevator system. Enjoy it :)
 # The UML diagram of out algorithm :
 ![WhatsApp Image 2021-11-18 at 16 47 58](https://user-images.githubusercontent.com/77808208/142437901-77f52ac5-9d41-465d-a11b-0053dbe010c8.jpeg)
 # Video simulation GUI of our project :
