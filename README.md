@@ -22,4 +22,5 @@ Also the actual algorithm of the calculation and aloocation of the best elevator
 ![WhatsApp Image 2021-11-18 at 16 47 58](https://user-images.githubusercontent.com/77808208/142437901-77f52ac5-9d41-465d-a11b-0053dbe010c8.jpeg)
 # Video simulation GUI of our project :
 [![CLICK HERE](https://img.youtube.com/vi/HGhyFRUDFwA/mqdefault.jpg)](https://www.youtube.com/watch?v=HGhyFRUDFwA "CLICK HERE")
-In this video we can see case B5.json and Calls_d.csv.
+<br />
+<br />In this video we can see case B5.json and Calls_d.csv.
