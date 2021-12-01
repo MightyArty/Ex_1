@@ -28,4 +28,4 @@ This class represent the GUI running simulator for the Elevator system. Enjoy it
 <br />In this video we can see case B5.json and Calls_d.csv.
 <br />Red full dot means new call invokes (correlated with the source floor) ,the dot becomes empty in the moment the elevator reached his destination.
 <br />The green dots works the same but for destinations, when call invokes green full dot appears in the destination floor
-
+j
